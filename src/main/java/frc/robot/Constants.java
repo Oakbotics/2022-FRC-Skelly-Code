@@ -19,4 +19,8 @@ public final class Constants {
         public static final int CAN_ADDRESS_RIGHT_SECONDARY_MOTOR = 4;
         public static final int CAN_ADDRESS_RIGHT_PRIMARY_MOTOR = 5;   
     }
+    
+    public static final class IOConstants {
+        public static final int CAN_ADDRESS_DRIVERCONTROLLER = 0;
+    }
 }
