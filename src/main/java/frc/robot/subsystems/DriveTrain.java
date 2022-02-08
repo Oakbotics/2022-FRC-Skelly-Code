@@ -4,38 +4,41 @@ import frc.robot.Constants;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 public class DriveTrain extends SubsystemBase {
-    
-    private WPI_TalonFX leftSecondaryMotor; 
-    private WPI_TalonFX leftPrimaryMotor; 
-    private WPI_TalonFX rightSecondaryMotor;
-    private WPI_TalonFX rightPrimaryMotor; 
-    
-    SpeedControllerGroup leftMotorGroup; 
-    SpeedControllerGroup rightMotorGroup;
-    
+
+    private final WPI_TalonFX leftSecondaryMotor;
+    private final WPI_TalonFX leftPrimaryMotor;
+    private final WPI_TalonFX rightSecondaryMotor;
+    private final WPI_TalonFX rightPrimaryMotor;
+
+    private final SpeedControllerGroup m_leftMotors;
+    private final SpeedControllerGroup m_rightMotors;
+
+    private final DifferentialDrive m_drive;
+
     public DriveTrain() {
-        super();
+        // super();
 
         leftSecondaryMotor = new WPI_TalonFX(Constants.DriveConstants.CAN_ADDRESS_LEFT_SECONDARY_MOTOR);
         leftPrimaryMotor = new WPI_TalonFX(Constants.DriveConstants.CAN_ADDRESS_LEFT_PRIMARY_MOTOR);
         rightSecondaryMotor = new WPI_TalonFX(Constants.DriveConstants.CAN_ADDRESS_RIGHT_SECONDARY_MOTOR);
         rightPrimaryMotor = new WPI_TalonFX(Constants.DriveConstants.CAN_ADDRESS_RIGHT_PRIMARY_MOTOR);
 
-        leftMotorGroup = new SpeedControllerGroup(leftPrimaryMotor, leftSecondaryMotor);
-        rightMotorGroup = new SpeedControllerGroup(rightPrimaryMotor, rightSecondaryMotor);
+        m_leftMotors = new SpeedControllerGroup(leftPrimaryMotor, leftSecondaryMotor);
+        m_rightMotors = new SpeedControllerGroup(rightPrimaryMotor, rightSecondaryMotor);
+
+        m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
     }
 
-    @Override
-    public void periodic() {
-
+    public void arcadeDrive(double fwd, double rot) {
+        m_drive.arcadeDrive(fwd, rot);
     }
 
-    @Override
-    public void simulationPeriodic() {
-
+    public void setMaxOutput(double maxOutput) {
+        m_drive.setMaxOutput(maxOutput);
     }
 }
