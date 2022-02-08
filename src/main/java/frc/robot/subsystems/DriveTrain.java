@@ -28,8 +28,12 @@ public class DriveTrain extends SubsystemBase {
         rightSecondaryMotor = new WPI_TalonFX(Constants.DriveConstants.CAN_ADDRESS_RIGHT_SECONDARY_MOTOR);
         rightPrimaryMotor = new WPI_TalonFX(Constants.DriveConstants.CAN_ADDRESS_RIGHT_PRIMARY_MOTOR);
 
+
         m_leftMotors = new SpeedControllerGroup(leftPrimaryMotor, leftSecondaryMotor);
         m_rightMotors = new SpeedControllerGroup(rightPrimaryMotor, rightSecondaryMotor);
+
+        m_leftMotors.setInverted(true);
+        m_rightMotors.setInverted(true);
 
         m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
     }
