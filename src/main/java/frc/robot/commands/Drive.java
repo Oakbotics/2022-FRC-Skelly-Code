@@ -13,5 +13,11 @@ public class Drive extends CommandBase {
         m_driveTrain = DriveTrain;
         m_forward = forward;
         m_rotation = rotation;
+        addRequirements(m_driveTrain);
+    }
+
+    @Override
+    public void execute(){
+        m_driveTrain.arcadeDrive(m_forward.getAsDouble(), m_rotation.getAsDouble());
     }
 }
