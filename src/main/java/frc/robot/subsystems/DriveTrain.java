@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.sensors.CANCoder;
+
 
 public class DriveTrain extends SubsystemBase {
 
@@ -15,7 +18,7 @@ public class DriveTrain extends SubsystemBase {
     private final WPI_TalonFX rightSecondaryMotor;
     private final WPI_TalonFX rightPrimaryMotor;
 
-    //private final 
+
     
     private final SpeedControllerGroup m_leftMotors;
     private final SpeedControllerGroup m_rightMotors;
