@@ -5,21 +5,34 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.DriveTrain;
 import java.util.function.DoubleSupplier;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 public class TimedAuto extends CommandBase {
-    private final DriveTrain m_driveTrain = new DriveTrain();
+    private final DriveTrain m_driveTrain;
     double startTime = Timer.getFPGATimestamp();
-    double time;
+    double time = Timer.getFPGATimestamp();
 
-    public void drive10s () {
-        time = Timer.getFPGATimestamp();
-        if (time - startTime < 5)   {
-            m_driveTrain.arcadeDrive(0.5, 0);
-        }else{
-            m_driveTrain.arcadeDrive(0, 0);
-
-        }
+    public TimedAuto (DriveTrain driveTrain) {
+        m_driveTrain = driveTrain;
+        addRequirements(m_driveTrain);
     }
+        
+
+    @Override
+    public void execute() {
+        
+        if (time - startTime < 5)   {
+            m_driveTrain.setSpeed(0.5);
+            time = Timer.getFPGATimestamp();
+        }
+        else{
+            m_driveTrain.setSpeed(0);
+        }
+        SmartDashboard.putNumber("Start Time", startTime);
+        SmartDashboard.putNumber("Time", time);
+    }
+
 
 
 

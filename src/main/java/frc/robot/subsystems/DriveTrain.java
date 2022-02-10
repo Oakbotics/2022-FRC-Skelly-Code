@@ -47,6 +47,11 @@ public class DriveTrain extends SubsystemBase {
         m_drive.arcadeDrive(fwd, rot);
     }
 
+    public void setSpeed(double speed) {
+        m_leftMotors.set(-speed);
+        m_rightMotors.set(speed);
+    }
+
     public void setMaxOutput(double maxOutput) {
         m_drive.setMaxOutput(maxOutput);
     }

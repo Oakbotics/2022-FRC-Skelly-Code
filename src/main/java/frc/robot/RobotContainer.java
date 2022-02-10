@@ -4,11 +4,14 @@
 
 package frc.robot;
 
+import java.sql.Time;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TimedAuto;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.commands.Drive;
 import frc.robot.Constants;
@@ -29,7 +32,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
-  private final m_autoCommand = new TimedAuto(m);
+  private final TimedAuto m_autoCommand = new TimedAuto(m_robotDrive);
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
 
@@ -42,13 +45,14 @@ public class RobotContainer {
     m_robotDrive.setDefaultCommand(
         // A split-stick arcade command, with forward/backward controlled by the left
         // hand, and turning controlled by the right.
-        new Drive(
+        new TimedAuto(m_robotDrive));
+        /*new Drive(
             m_robotDrive,
             () -> m_driverController.getY(),
-            () -> m_driverController.getX()));
+            () -> m_driverController.getX()));*/
 
-    //SmartDashboard.putNumber("Left Encoder", value);
-    //SmartDashboard.putNumber("Right Encoder", value);
+    //SmartDashboard.putNumber("Start Time", );
+    //SmartDashboard.putNumber("Time Elapsed", time);
   }
 
   /**
