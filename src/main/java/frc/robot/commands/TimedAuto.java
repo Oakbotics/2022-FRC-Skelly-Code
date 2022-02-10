@@ -7,13 +7,12 @@ import frc.robot.subsystems.DriveTrain;
 import java.util.function.DoubleSupplier;
 
 public class TimedAuto extends CommandBase {
-    private final DriveTrain m_driveTrain;
+    private final DriveTrain m_driveTrain = new DriveTrain();
     double startTime = Timer.getFPGATimestamp();
     double time;
 
-    public void drive10s (DriveTrain driveTrain) {
+    public void drive10s () {
         time = Timer.getFPGATimestamp();
-        m_driveTrain = driveTrain;
         if (time - startTime < 5)   {
             m_driveTrain.arcadeDrive(0.5, 0);
         }else{

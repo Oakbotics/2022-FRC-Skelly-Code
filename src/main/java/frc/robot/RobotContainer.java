@@ -29,7 +29,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final m_autoCommand = new TimedAuto(m);
+  //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
 
   Joystick m_driverController = new Joystick(Constants.IOConstants.CAN_ADDRESS_DRIVERCONTROLLER);
