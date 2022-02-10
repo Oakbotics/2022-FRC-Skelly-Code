@@ -28,10 +28,6 @@ public class Climber extends SubsystemBase{
     CANSparkMax rightClimber = new CANSparkMax(Constants.ClimbConstants.CAN_ADDRESS_CLIMB_RIGHT, MotorType.kBrushless);    
     CANSparkMax leftClimber = new CANSparkMax(Constants.ClimbConstants.CAN_ADDRESS_CLIMB_LEFT, MotorType.kBrushless);
     
-    public Climber(){
-        super();
-        
-    }
     public void run(double speed) {
 
         leftClimber.restoreFactoryDefaults();
