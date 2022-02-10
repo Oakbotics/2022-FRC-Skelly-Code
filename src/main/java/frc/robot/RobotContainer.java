@@ -46,8 +46,8 @@ public class RobotContainer {
             () -> m_driverController.getY(),
             () -> m_driverController.getX()));
 
-    SmartDashboard.putNumber("Left Encoder", value);
-    SmartDashboard.putNumber("Right Encoder", value);
+    //SmartDashboard.putNumber("Left Encoder", value);
+    //SmartDashboard.putNumber("Right Encoder", value);
   }
 
   /**
