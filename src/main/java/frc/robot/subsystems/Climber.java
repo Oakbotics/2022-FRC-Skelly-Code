@@ -1,18 +1,19 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
+
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.ClimbConstants;
 
-import com.revrobotics.CANSparkMax.IdleMode;
-
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 
 public class Climber extends SubsystemBase{
 
@@ -36,7 +37,7 @@ public class Climber extends SubsystemBase{
         leftClimber.restoreFactoryDefaults();
         rightClimber.follow(leftClimber);
         m_joystick = new Joystick(kJoystickPort);
-    
+        
         leftClimber.set(speed);
 
     }
