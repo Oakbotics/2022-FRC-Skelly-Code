@@ -28,14 +28,19 @@ public class TimedAuto extends CommandBase {
         
         if (time - startTime < 3)   {
             m_driveTrain.setSpeed(0.5);
-            time = Timer.getFPGATimestamp();
         }
-        // else if (time - startTime) {
-        //     m_driveTrain.setSpeed(0);
-        // }
+        else if (3 <= time - startTime && time - startTime <= 4) {
+            m_driveTrain.setSpeed(0);
+        }
+        else if (4 <= (time - startTime) && (time - startTime) <= 7) {
+            m_driveTrain.setSpeed(-0.5);
+        }
         else{
             m_driveTrain.setSpeed(0);
         }
+        
+        time = Timer.getFPGATimestamp();
+
         SmartDashboard.putNumber("Start Time", startTime);
         SmartDashboard.putNumber("Time", time);
     }
