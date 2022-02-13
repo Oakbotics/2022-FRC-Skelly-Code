@@ -10,21 +10,29 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class TimedAuto extends CommandBase {
     private final DriveTrain m_driveTrain;
-    double startTime = Timer.getFPGATimestamp();
-    double time = Timer.getFPGATimestamp();
+    double startTime;
+    double time;
 
     public TimedAuto (DriveTrain driveTrain) {
         m_driveTrain = driveTrain;
         addRequirements(m_driveTrain);
     }
         
+    @Override
+    public void initialize() {
+        startTime  = Timer.getFPGATimestamp();
+        time = Timer.getFPGATimestamp();
+    }
 
     @Override
     public void execute() {
         
-        if (time - startTime < 5)   {
+        if (time - startTime < 3)   {
             m_driveTrain.setSpeed(0.5);
             time = Timer.getFPGATimestamp();
+        }
+        else if (time - startTime <) {
+            m_driveTrain.setSpeed(0)
         }
         else{
             m_driveTrain.setSpeed(0);
