@@ -13,6 +13,9 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    
+    //remember to change it to the new drivetrain later!!!!!
+    
     public static final class DriveConstants {
         public static final int CAN_ADDRESS_LEFT_SECONDARY_MOTOR = 2;
         public static final int CAN_ADDRESS_LEFT_PRIMARY_MOTOR = 3;
