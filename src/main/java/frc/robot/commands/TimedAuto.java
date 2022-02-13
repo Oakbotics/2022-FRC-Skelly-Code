@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.DriveTrain;
-import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -31,9 +30,9 @@ public class TimedAuto extends CommandBase {
             m_driveTrain.setSpeed(0.5);
             time = Timer.getFPGATimestamp();
         }
-        else if (time - startTime <) {
-            m_driveTrain.setSpeed(0)
-        }
+        // else if (time - startTime) {
+        //     m_driveTrain.setSpeed(0);
+        // }
         else{
             m_driveTrain.setSpeed(0);
         }

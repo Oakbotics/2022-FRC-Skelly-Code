@@ -4,20 +4,14 @@
 
 package frc.robot;
 
-import java.sql.Time;
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.TimedAuto;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.commands.Drive;
-import frc.robot.Constants;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -32,7 +26,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
-  private final TimedAuto m_autoCommand = new TimedAuto(m_robotDrive);
+  private final Command m_autoCommand = new TimedAuto(m_robotDrive);
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
 
@@ -42,14 +36,12 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
+    
     m_robotDrive.setDefaultCommand(
-        // A split-stick arcade command, with forward/backward controlled by the left
-        // hand, and turning controlled by the right.
-        new TimedAuto(m_robotDrive));
-        /*new Drive(
+        new Drive(
             m_robotDrive,
             () -> m_driverController.getY(),
-            () -> m_driverController.getX()));*/
+            () -> m_driverController.getX()));
 
     //SmartDashboard.putNumber("Start Time", );
     //SmartDashboard.putNumber("Time Elapsed", time);
