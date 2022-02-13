@@ -32,6 +32,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    
     new SpinSpark(m_Climber, 1);
   }
 
